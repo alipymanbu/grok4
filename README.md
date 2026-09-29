@@ -1,110 +1,27 @@
-# Grok 4.5 国内使用指南（2026 年 7 月更新）
+# grok4
 
-本项目提供 Grok 4.5 的中文介绍、国内访问入口和多语言 GitHub Pages 页面。根据 xAI 官方模型文档，`grok-4.5` 已进入公开模型目录，并提供 `grok-4.5-latest` 别名。
+本仓库是「grok4」的安卓版本获取入口，附使用资料索引。
 
-官方信息显示，Grok 4.5 面向代码、聊天和智能体工具调用，支持可配置推理、函数调用与结构化输出；上下文窗口为 500K tokens。官方标价为输入 $2 / 1M tokens、输出 $6 / 1M tokens，超过 200K tokens 的长上下文价格更高。价格、限额和可用区域可能继续调整，使用前请以 xAI 文档为准。
+## 安装文件资源（夸克网盘）
 
-**Grok 4.5 免费体验通道：https://kelaode.maynorai.top/list/#/home**
+> **grok4 安装文件资源（夸克网盘）**：[https://pan.quark.cn/s/6e3f18fa0afe](https://pan.quark.cn/s/6e3f18fa0afe)
 
-## Grok 4.5 最新状态
+## 官方项目
 
-- **官方模型 ID**：`grok-4.5`
-- **滚动别名**：`grok-4.5-latest`
-- **输入**：文本、图片
-- **输出**：文本
-- **上下文窗口**：500K tokens
-- **官方定位**：代码与通用任务旗舰模型，强调 agentic tool calling、低幻觉和可配置推理
-- **API 价格**：输入 $2 / 1M tokens，输出 $6 / 1M tokens；长上下文另计
-- **Playground 状态**：官方模型页当前标注为 coming soon，具体以 xAI 页面为准
+- 上游项目：[xianyu110/grok4](https://github.com/xianyu110/grok4)
 
-官方来源：
+## 更多资料
 
-- [xAI 模型目录](https://docs.x.ai/developers/models)
-- [Grok 4.5 模型页](https://docs.x.ai/developers/models/grok-4.5)
-- [xAI Grok 4.5 发布页](https://x.ai/news/grok-4-5)
-
-![Grok 4.1 Header](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2ggiaLvzQhB20VvD4tibZqHHmF2kG3lNynEbZkaw0fyIW30uzicXcdEDzxg/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=0)
-
-> 上图及下方历史截图来自此前 Grok 4.1 内容，按项目要求保留用于版本演进参考；Grok 4.5 的实时参数以官方文档为准。
-
-## 国内访问方式
-
-以下原有入口继续保留：
-
-- **[https://trygrokai.asia/](https://trygrokai.asia/)** - 新增 Grok 体验入口，进入后请核对实际可用模型与服务条款。
-- **[https://trygpt.asia/list/#/home](https://trygpt.asia/list/#/home)** - 支持 Grok 与多种 AI 模型，实际可用模型请以站内列表为准。
-- **福利：限时免费授权码 `grok1108`（请在设置或充值处尝试兑换）**
-
-![体验通道](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2giaesKM5DTibuVMYWBicMEqM3icAibTHIyV5f7tRgJq1jeYwmmmvAzQGTAUw/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=2)
-
-使用第三方镜像或聚合服务时，请先确认模型名称、价格、隐私政策和数据保留方式。第三方入口不等同于 xAI 官方服务，本项目也不对第三方服务的稳定性、账号状态或数据安全作绝对保证。
-
-## Grok 4.5 的核心变化
-
-### 1. 代码与通用任务合并到同一旗舰模型
-
-xAI 将 Grok 4.5 描述为适用于“code and everything else”的旗舰模型。对于开发者，这意味着代码生成、聊天、工具调用和结构化输出可以围绕同一模型 ID 设计，不必依赖未经确认的模型名称。
-
-![LMArena排行榜](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gJTLvyGCtSfClB1TVxAtk9VDRy0QUm3PIVq6FsK9RkechM8tpEKSEbA/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=1)
-
-![盲测数据](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2g8atyj2ypPEMDZaBCv5CrJick1DSTVZsyQcW3fcPaMnFkNbiaRsoqmPMg/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=3)
-
-以上榜单图为历史版本材料。README 不再把旧版跑分直接套用到 Grok 4.5；新的横向结论应等待公开模型卡、统一测试条件和可复现评测。
-
-### 2. 500K 上下文与图文输入
-
-官方模型目录列出 500K tokens 上下文，并标注文本与图片输入、文本输出。长上下文适合大型代码库、长文档和多轮智能体任务，但超过 200K tokens 后价格会上调，应在生产环境中控制上下文长度与缓存策略。
-
-![EQ排行榜](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gOjJLpK2YSj8EDMjQSQRZkFA1XWJibrcSrAYbBfH2iaOr8ol1kvXy5akQ/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=4)
-
-![情商对话截图](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gW9jkzWvMmnuyuf1iabLz8woziaNSyicLYEnvzDCkFvf3D3JR5BqyQhpng/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=5)
-
-### 3. 可配置推理与智能体工具调用
-
-Grok 4.5 官方能力表包含 reasoning、function calling 与 structured outputs。实际接入时应使用官方 SDK/API 返回的模型能力，不要依赖页面宣传词推断参数名或兼容性。
-
-![幻觉率对比](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gNTt7JQibQD34fZT2mBz5AGBXGziaa1SL7C062bq4DDTHppJQWMh3rUJw/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=6)
-
-xAI 使用“minimal hallucinations”描述模型方向，但这不是零幻觉保证。涉及事实、金融、医疗、法律或生产操作时，仍需外部检索、引用校验和人工确认。
-
-### 4. API 成本更容易预估
-
-按官方当前标价，100 万输入 tokens 约 $2，100 万输出 tokens 约 $6；缓存输入与批处理可能有不同计费。超过 200K tokens 的请求会进入长上下文价格档，成本估算时应单独计算。
-
-![创意写作1](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gFA4SJoomV5w4j9PlqsibJxzvIWhiccb19tDQqvP9maZKV8e10alxrVGQ/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=7)
-
-![创意写作2](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2gkp0MWZVsqS7PhDOkDBc4eMoeGf3vdNr0Tura4OlO8DOg7KyWia6NVuw/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=8)
-
-## 常见问题
-
-### Grok 4.5 已经发布了吗？
-
-是。xAI 官方模型目录已列出 `grok-4.5`，并提供 `grok-4.5-latest` 别名。
-
-### Grok 4.5 支持图片吗？
-
-官方模型数据标注输入支持文本和图片，输出为文本。
-
-### Grok 4.5 的价格是多少？
-
-官方目录当前显示输入 $2 / 1M tokens、输出 $6 / 1M tokens；超过 200K tokens 的长上下文请求价格更高。请在使用前复核官方价格页。
-
-### 第三方入口一定提供 Grok 4.5 吗？
-
-不一定。进入第三方站点后应核对实际模型列表，不要只凭页面标题判断底层模型。
-
-### Grok 4.5 会完全避免幻觉吗？
-
-不会。官方强调减少幻觉，但所有大模型都需要事实核验和风险控制。
+- [下载与安装教程](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.md)
+- [Imagine生图与视频怎么用](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/Imagine%E7%94%9F%E5%9B%BE%E4%B8%8E%E8%A7%86%E9%A2%91%E6%80%8E%E4%B9%88%E7%94%A8.md)
+- [SuperGrok订阅档位与额度](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/SuperGrok%E8%AE%A2%E9%98%85%E6%A1%A3%E4%BD%8D%E4%B8%8E%E9%A2%9D%E5%BA%A6.md)
+- [安装失败与打不开排查](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E4%B8%8E%E6%89%93%E4%B8%8D%E5%BC%80%E6%8E%92%E6%9F%A5.md)
+- [模式切换与免费额度](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2%E4%B8%8E%E5%85%8D%E8%B4%B9%E9%A2%9D%E5%BA%A6.md)
+- [注册登录与账号问题](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E4%B8%8E%E8%B4%A6%E5%8F%B7%E9%97%AE%E9%A2%98.md)
+- [语音对话与图片生成用法](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E8%AF%AD%E9%9F%B3%E5%AF%B9%E8%AF%9D%E4%B8%8E%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E7%94%A8%E6%B3%95.md)
+- [陪伴角色Ani去哪了](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/grok4/%E9%99%AA%E4%BC%B4%E8%A7%92%E8%89%B2Ani%E5%8E%BB%E5%93%AA%E4%BA%86.md)
+- [全部软件目录](https://github.com/alipymanbu/Android/blob/master/%E5%85%A8%E9%83%A8%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%BD%95.md)
 
 ---
 
-**Grok 4.5 页面已更新，原有体验入口与历史图片继续保留。**
-
-**立即体验 Grok 4.5 中文版：https://kelaode.maynorai.top/list/#/home**
-
-![Footer Banner](https://mmbiz.qpic.cn/sz_mmbiz_png/1ibrBHWruibROdQAHQbvk5WQlic3wn2tD2giaesKM5DTibuVMYWBicMEqM3icAibTHIyV5f7tRgJq1jeYwmmmvAzQGTAUw/640?wx_fmt=png\&from=appmsg\&watermark=1\&tp=wxpic\&wxfrom=5\&wx_lazy=1#imgIndex=9)
-
----
-
-⭐ **如果本指南对您有帮助，请帮忙点亮 Star~**
+> 本仓库由上游项目 fork 而来，原始说明见[上游仓库](https://github.com/xianyu110/grok4)。
